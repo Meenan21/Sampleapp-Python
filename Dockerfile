@@ -1,20 +1,13 @@
-version: '1.0'
-stages:
-  - checkout
-  - package
-steps:
-  main_clone:
-    title: Cloning main repository...
-    type: git-clone
-    repo: 'Sampleapp-Python'
-    revision: 1
-    stage: checkout
-  MyAppDockerImage:
-    title: Building Docker Image
-    type: build
-    stage: package
-    image_name: my-app-image
-    working_directory: ./
-    tag: v1.0.0
-    dockerfile: Dockerfile
-      
+FROM node:latest
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY package.json /usr/src/app/
+RUN npm install --silent
+COPY . /usr/src/app
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD [ "npm", "start" ]
