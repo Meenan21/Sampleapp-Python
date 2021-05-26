@@ -1,0 +1,6 @@
+version: '2'
+services:
+  app:
+    image: meenan21/sampleapp-python:master
+    ports:
+      - 3000
