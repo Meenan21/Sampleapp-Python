@@ -1,13 +1,19 @@
-FROM node:latest
+FROM python:3.8.2-alpine3.11
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV FLASK_APP=flaskr
+ENV FLASK_ENV=development
 
-COPY package.json /usr/src/app/
-RUN npm install --silent
-COPY . /usr/src/app
-EXPOSE 3000
+COPY . /app
 
-ENV PORT 3000
+WORKDIR /app
 
-CMD [ "npm", "start" ]
+RUN pip install --editable .
+
+RUN flask init-db
+
+# Unit tests
+# RUN pip install pytest && pytest
+
+EXPOSE 5000
+
+CMD [ "flask", "run", "--host=0.0.0.0" ]
