@@ -6,8 +6,8 @@ steps:
   main_clone:
     title: Cloning main repository...
     type: git-clone
-    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-    revision: '${{CF_REVISION}}'
+    repo: 'Sampleapp-Python'
+    revision: 1
     stage: checkout
   MyAppDockerImage:
     title: Building Docker Image
