@@ -15,8 +15,9 @@ steps:
       title: Building Image
       type: build
       #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
-      image_name: example-launch-compose
+      image_name: my-app-image
       #Dockerfile location should be relative to the working directory
+      working_directory: ./
       dockerfile: Dockerfile
       tag: master
       stage: package
