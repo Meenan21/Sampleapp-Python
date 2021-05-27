@@ -28,7 +28,7 @@ steps:
         version: '2'
         services:
           app:
-            image: sampleapp-python:master
+            image: sampleapp-python:main
             ports:
             - 3000
       environment_name: 'dev'
