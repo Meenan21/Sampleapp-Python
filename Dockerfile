@@ -7,7 +7,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN pip install --editable .
+RUN pip install --upgrade pip --editable .
 
 RUN flask init-db
 
